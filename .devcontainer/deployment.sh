@@ -3,10 +3,8 @@
 kubectl create namespace easytrade
 kubectl create namespace dynatrace
 
-sed -i "s,TENANTURL_TOREPLACE,$DT_URL," /workspaces/$RepositoryName/dynatrace/dynakube.yaml
+sed -i "s,TENANTURL_TOREPLACE,$DT_URL_RO," /workspaces/$RepositoryName/dynatrace/dynakube.yaml
 sed -i "s,CLUSTER_NAME_TO_REPLACE,$GITHUB_USER,"  /workspaces/$RepositoryName/dynatrace/dynakube.yaml
-
-sed -i "s,VALUETOREPLACEWITHKEY,$DT_DEBUGGER_KEY," /workspaces/$RepositoryName/deployment/credit-card-order-service.yaml
 
 # Capture OpenTelemetry Span Attributes
 # curl -X 'POST' \
@@ -274,10 +272,10 @@ sed -i "s,VALUETOREPLACEWITHKEY,$DT_DEBUGGER_KEY," /workspaces/$RepositoryName/d
 #       ]'
 
 # Create secret for k6 to use
-kubectl -n easytrade create secret generic dt-details --from-literal=DT_ENDPOINT=$DT_ENDPOINT --from-literal=DT_API_TOKEN=$DT_TOKEN
+kubectl -n easytrade create secret generic dt-details --from-literal=DT_ENDPOINT=$DT_ENDPOINT_RO --from-literal=DT_API_TOKEN=$DT_TOKEN_RO
 
 # Deploy Dynatrace
-kubectl -n dynatrace create secret generic dynakube --from-literal="apiToken=$DT_OPERATOR_TOKEN" --from-literal="dataIngestToken=$DT_TOKEN"
+kubectl -n dynatrace create secret generic dynakube --from-literal="apiToken=$DT_OPERATOR_TOKEN_RO" --from-literal="dataIngestToken=$DT_TOKEN_RO"
 
 wget -O /workspaces/$RepositoryName/dynatrace/kubernetes.yaml https://github.com/Dynatrace/dynatrace-operator/releases/download/v1.2.0/kubernetes.yaml
 wget -O /workspaces/$RepositoryName/dynatrace/kubernetes-csi.yaml https://github.com/Dynatrace/dynatrace-operator/releases/download/v1.2.0/kubernetes-csi.yaml
