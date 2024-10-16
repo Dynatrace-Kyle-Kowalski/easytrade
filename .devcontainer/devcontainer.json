@@ -56,13 +56,13 @@
 
 	// // Add recommended secrets
 	"secrets": {
-	 	  "DT_URL": {
+	 	  "DT_URL_RO": {
 	 		"description": "eg. https://abc12345.live.dynatrace.com"
 		},
-		  "DT_TOKEN": {
+		  "DT_TOKEN_RO": {
 	    	        "description": "Dynatrace API token with these permissions: Ingest metrics, Ingest logs, Ingest events, Ingest OpenTelemetry, Read metrics, Write settings"
 		},
-		  "DT_OPERATOR_TOKEN": {
+		  "DT_OPERATOR_TOKEN_RO": {
 			"description": "Dynatrace API token with these permissions: Create ActiveGate token, Read entities, Read Settings, Write Settings, Access problem and event feed, metrics and topology, Read configuration, Write configuration, Paas integration - installer downloader"
 		},
 		  "DT_DEBUGGER_KEY" : {
