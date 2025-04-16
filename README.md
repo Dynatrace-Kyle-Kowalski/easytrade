@@ -1,4 +1,4 @@
-# easytrade
+# easytrade live debugger demo
 
 A project consisting of many small services that connect to each other.
 
